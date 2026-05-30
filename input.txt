@@ -1,0 +1,60 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Alice Sharma",
+      "age": 28,
+      "email": "alice@example.com",
+      "is_active": true,
+      "role": "AI Engineer",
+      "skills": ["Python", "LangChain", "RAG", "FastAPI"],
+      "score": 95.5
+    },
+    {
+      "id": 2,
+      "name": "Bob Thapa",
+      "age": 32,
+      "email": "bob@example.com",
+      "is_active": false,
+      "role": "ML Engineer",
+      "skills": ["PyTorch", "Python", "CUDA"],
+      "score": 88.0
+    },
+    {
+      "id": 3,
+      "name": "Clara Rai",
+      "age": 25,
+      "email": "clara@example.com",
+      "is_active": true,
+      "role": "Backend Developer",
+      "skills": ["Node.js", "Python", "SQL", "Docker"],
+      "score": 91.2
+    },
+    {
+      "id": 4,
+      "name": "Dev Karki",
+      "age": 30,
+      "email": "dev@example.com",
+      "is_active": true,
+      "role": "AI Engineer",
+      "skills": ["Python", "OpenAI", "Vector DBs", "FastAPI"],
+      "score": 78.4
+    },
+    {
+      "id": 5,
+      "name": "Eva Lama",
+      "age": 27,
+      "email": "eva@example.com",
+      "is_active": false,
+      "role": "Data Scientist",
+      "skills": ["Python", "Pandas", "NumPy", "Matplotlib"],
+      "score": 83.7
+    }
+  ],
+  "company": {
+    "name": "NepalAI Labs",
+    "city": "Kathmandu",
+    "founded": 2022,
+    "total_employees": 5
+  }
+}
