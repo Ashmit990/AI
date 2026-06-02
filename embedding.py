@@ -1,25 +1,33 @@
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
-import sys
+import numpy as np
 
-try:
-    model=SentenceTransformer("all-MiniLM-L6-v2")
-except Exception as e:
-    print(e)
-    sys.exit()
+model = SentenceTransformer("all-MiniLM-L6-v2")
 
-sentences = [
-    "I love cats",
-    "I love dogs",
-    "Python is a programming language",
-    "Kathmandu is in Nepal"
+# imagine these are chunks from a document
+documents = [
+    "Python is the best language for AI development",
+    "Kathmandu is the capital city of Nepal",
+    "LLMs are large language models trained on text",
+    "The Himalayas are the tallest mountains in the world",
+    "FastAPI is used to build Python web backends",
+    "Nepal has a population of about 30 million people",
+    "PSG won UCL 2 times in a row",
+    "Fifa world cup 2018 was won by France"
 ]
 
-embedding=model.encode(sentences)
-scores=cosine_similarity([embedding[0]],embedding[0:])
-print(scores)
+# embed all documents once (this is the "indexing" step)
+doc_embeddings = model.encode(documents)
 
-print(f"similarity of I love cats: {scores[0][0]:.2f}")
-print(f"similarity of I love dogs: {scores[0][1]:.2f}")
-print(f"similarity of Python is a programming language: {scores[0][2]:.2f}")
-print(f"similarity of Kathmandu is in Nepal: {scores[0][3]:.2f}")
+# user asks a question (this is the "query" step)
+query = "Who will win the world cup 2026?"
+query_embedding = model.encode([query])
+
+# find most similar documents
+scores = cosine_similarity(query_embedding, doc_embeddings)[0]
+top_indices = np.argsort(scores)[::-1][:2]  # top 2
+
+print(f"Query: {query}\n")
+print("Most relevant chunks:")
+for i in top_indices:
+    print(f"  [{scores[i]:.2f}] {documents[i]}")
